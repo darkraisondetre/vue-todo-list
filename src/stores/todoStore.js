@@ -45,5 +45,9 @@ export const useTodoStore = defineStore('todo', {
       this.todos = this.todos.filter((t) => t.id !== id)
       this.saveToStorage()
     },
+    markAllDone() {
+      this.todos.forEach((t) => (t.done = true))
+      this.saveToStorage()
+    },
   },
 })

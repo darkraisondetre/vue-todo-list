@@ -5,7 +5,7 @@ import { useTodoStore } from '../stores/todoStore'
 
 const todoStore = useTodoStore()
 const { todos, newTodoText } = storeToRefs(todoStore)
-const { addTodo, toggleTodo, removeTodo, loadFromStorage } = todoStore
+const { addTodo, toggleTodo, removeTodo, loadFromStorage, markAllDone } = todoStore
 onMounted(() => {
   loadFromStorage()
 })
@@ -29,6 +29,13 @@ onMounted(() => {
         Добавить
       </button>
     </form>
+
+    <button
+      class="px-4 py-2 rounded bg-emerald-700 hover:bg-emerald-600 text-sm font-bold mb-4"
+      @click="markAllDone"
+    >
+      Mark All Done
+    </button>
 
     <ul class="space-y-2">
       <li
