@@ -1,10 +1,14 @@
 <script setup>
+import { onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useTodoStore } from '../stores/todoStore'
 
 const todoStore = useTodoStore()
 const { todos, newTodoText } = storeToRefs(todoStore)
-const { addTodo, toggleTodo, removeTodo } = todoStore
+const { addTodo, toggleTodo, removeTodo, loadFromStorage } = todoStore
+onMounted(() => {
+  loadFromStorage()
+})
 </script>
 
 <template>
